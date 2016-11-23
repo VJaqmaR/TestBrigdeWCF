@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <NoStdLib>true</NoStdLib>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32F39D74-E65C-4EDC-AED1-E6B55E77E7D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BridgeWithWCF.Web.Script</RootNamespace>
+    <AssemblyName>BridgeWithWCF.Web.Script</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProxy\UserProxy.cs" />
+    <Compile Include="UI\UsersListUI.cs" />
+    <Compile Include="Wrapper\Datatable\ColumnOptions.cs" />
+    <Compile Include="Wrapper\Datatable\DataTableBase.cs" />
+    <Compile Include="Wrapper\Datatable\Helper.cs" />
+    <Compile Include="Wrapper\Datatable\Options.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bridge\output\readme.txt" />
+    <Content Include="Bridge\www\demo2.html" />
+    <Content Include="Bridge\www\demo.html" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.bootstrap.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.bootstrap.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.bootstrap4.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.foundation.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.foundation.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.jqueryui.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.jqueryui.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.material.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.material.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.semanticui.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.semanticui.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.uikit.css" />
+    <Content Include="Bridge\www\script\datatable\css\dataTables.uikit.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\jquery.dataTables.css" />
+    <Content Include="Bridge\www\script\datatable\css\jquery.dataTables.min.css" />
+    <Content Include="Bridge\www\script\datatable\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Bridge\www\script\datatable\images\favicon.ico" />
+    <Content Include="Bridge\www\script\datatable\images\sort_asc.png" />
+    <Content Include="Bridge\www\script\datatable\images\sort_asc_disabled.png" />
+    <Content Include="Bridge\www\script\datatable\images\sort_both.png" />
+    <Content Include="Bridge\www\script\datatable\images\sort_desc.png" />
+    <Content Include="Bridge\www\script\datatable\images\sort_desc_disabled.png" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.bootstrap.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.bootstrap.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.bootstrap4.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.foundation.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.foundation.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.jqueryui.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.jqueryui.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.material.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.material.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.semanticui.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.semanticui.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.uikit.js" />
+    <Content Include="Bridge\www\script\datatable\js\dataTables.uikit.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\jquery.dataTables.js" />
+    <Content Include="Bridge\www\script\datatable\js\jquery.dataTables.min.js" />
+    <Content Include="Bridge\www\script\datatable\js\jquery.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bridge\bridge.json" />
+    <None Include="Bridge\www\script\datatable\images\Sorting icons.psd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Bridge, Version=15.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bridge.Core.15.4.0\lib\net40\Bridge.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Bridge.Bootstrap3, Version=3.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bridge.Bootstrap.3.9.3\lib\net40\Bridge.Bootstrap3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Bridge.Html5, Version=15.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bridge.Html5.15.4.0\lib\net40\Bridge.Html5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Bridge.jQuery2, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bridge.jQuery.2.9.2\lib\net40\Bridge.jQuery2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BridgeWithWCF.Web.DTO\BridgeWithWCF.Web.DTO.csproj">
+      <Project>{cefa7a4e-824e-4a96-9ee7-5381b076663b}</Project>
+      <Name>BridgeWithWCF.Web.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Bridge.Min.15.4.0\build\Bridge.Min.targets" Condition="Exists('..\packages\Bridge.Min.15.4.0\build\Bridge.Min.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Bridge.Min.15.4.0\build\Bridge.Min.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Bridge.Min.15.4.0\build\Bridge.Min.targets'))" />
+  </Target>
+</Project>

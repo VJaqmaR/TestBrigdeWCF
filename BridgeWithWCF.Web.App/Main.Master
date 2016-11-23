@@ -1,0 +1,113 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="BridgeWithWCF.Web.App.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Bridge With WCF management</title>
+
+     <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <!-- Bootstrap -->
+    <link href="/resources/plugins/boostraptemplate/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/resources/plugins/boostraptemplate/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/resources/plugins/boostraptemplate/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatable CSS -->
+    <link href="/resources/plugins/datatable/css/jquery.dataTables.min.css" rel="stylesheet">
+    
+    <!-- Custom styling plus plugins -->
+    <link href="/resources/plugins/boostraptemplate/custom/css/custom.min.css" rel="stylesheet">
+
+
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="__scriptManager" runat="server"
+                EnablePartialRendering="True"
+                EnableScriptGlobalization="true"
+                EnableScriptLocalization="true"
+                EnablePageMethods="true"
+                AsyncPostBackTimeout="30000">
+        </asp:ScriptManager>
+
+        <div class="container body">
+            <div class="main_container">
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a class="site_title" href="index.html">
+                                <i class="fa fa-paw"></i>
+                                <span>Birdge WCF Test</span>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section active">
+                                <h3>General</h3>
+                                <ul class="side-menu" style="">
+                                    <li>
+                                        <a>
+                                            <i class="fa fa-home"></i>
+                                            Home
+                                            <span class="fa fa-chevron-down"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="right_col" role="main" style="min-height: 3532px;">
+
+                    <div id="errorMessageDiv" class="alert alert-danger" style="display:none;" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="errorSpan">Error:</span>
+                    </div>
+
+                    <div>
+                        <asp:ContentPlaceHolder ID="_content" runat="server">
+        
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ================== BEGIN BASE JS ================== -->
+        
+        <!-- jQuery -->
+        <script src="/resources/plugins/boostraptemplate/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="/resources/plugins/boostraptemplate/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- FastClick -->
+        <script src="/resources/plugins/boostraptemplate/fastclick/lib/fastclick.js"></script>
+        <!-- NProgress -->
+        <script src="/resources/plugins/boostraptemplate/nprogress/nprogress.js"></script>
+
+        <!-- Custom Theme Scripts -->
+        <script src="/resources/plugins/boostraptemplate/custom/js/custom.min.js"></script>
+                
+        <!-- Datatable -->
+        <script src="/resources/plugins/datatable/js/jquery.js"></script>
+        <script src="/resources/plugins/datatable/js/jquery.dataTables.min.js"></script>
+
+        <!-- Generated script -->
+        <script src="/resources/plugins/generated/bridge.min.js"></script>
+        <script src="/resources/plugins/generated/BridgeWithWCF.web.script.js"></script>
+        <script src="/resources/plugins/generated/BridgeWithWCF.web.script.uI.js"></script>
+        <script src="/resources/plugins/generated/BridgeWithWCF.web.script.serviceProxy.js"></script>
+        <script src="/resources/plugins/generated/BridgeWithWCF.web.script.wrapper.datatable.js"></script>
+
+        <!-- ================== END BASE JS ================== -->
+
+    </form>
+</body>
+</html>
