@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="BridgeWithWCF.Web.App.Service.UserManager" CodeBehind="UserManager.svc.cs" %>
