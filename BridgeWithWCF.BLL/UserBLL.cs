@@ -59,11 +59,11 @@ namespace BridgeWithWCF.Web.BLL
 
             GroupUsers grUsers2 = new GroupUsers();
             grUsers2.GroupName = "2nd grp";
-            grUsers2.Users = userList1;
+            grUsers2.Users = userList2;
 
             GroupUsers grUsers3 = new GroupUsers();
             grUsers3.GroupName = "3rd GP";
-            grUsers3.Users = userList1;
+            grUsers3.Users = userList3;
 
             List<GroupUsers> groupUsersList = new List<GroupUsers>();
             groupUsersList.Add(grUsers1);
