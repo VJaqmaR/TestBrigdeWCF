@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Bridge;
 using Bridge.Html5;
 using Bridge.jQuery2;
-using BridgeWithWCF.Web.DTO;
 using BridgeWithWCF.Web.Script.ServiceProxy;
 
 namespace BridgeWithWCF.Web.Script.UI
@@ -12,6 +11,7 @@ namespace BridgeWithWCF.Web.Script.UI
     public class UsersListUI
     {
         private readonly string usersListTableSelector = "div._userlist table#userList tbody";
+        private readonly string groupUsersTableSelector = "div._userlistGoup table#userListGroup tbody";
         private readonly string errorDivSelector = "div#errorMessageDiv";
         private readonly string errorSpanSelector = "div#errorMessageDiv.errorSpan";
         
@@ -22,6 +22,7 @@ namespace BridgeWithWCF.Web.Script.UI
         public void LoadUser()
         {
             LoadUserIntoTable();
+            LoadGroupUserIntoTable();
         }
 
         private async Task LoadUserIntoTable()
@@ -30,17 +31,9 @@ namespace BridgeWithWCF.Web.Script.UI
 
             try
             {
-                var result = await CallWS();
+                var result = await CallUsersWS();
 
-// ERROR20161112 : 
-// Unable to access the Userlist in the generated bridge javascript => the "result" is not typed in bridge javascript
-                Console.WriteLine("Count nb result {0}", result.UserList.Count);
-                
-                foreach (User usr in result.UserList)
-                {
-                    Console.WriteLine("Writing to table", usr.Username);
-                    //WriteTableUserListTemplate(usr);
-                }
+                WriteTableUserList(result);
             }
             catch (Exception e)
             {
@@ -53,11 +46,11 @@ namespace BridgeWithWCF.Web.Script.UI
                 errorTarget.Show();
             }
         }
-        
-        private async Task<UsersResponseData> CallWS()
+
+        private async Task<List<User>> CallUsersWS()
         {
-            var tcs = new TaskCompletionSource<UsersResponseData>();
-            
+            var tcs = new TaskCompletionSource<List<User>>();
+
             UserProxy.Instance.GetAllUsers(
                 (r) => tcs.TrySetResult(r),
                 (dynamic e) => {
@@ -65,6 +58,82 @@ namespace BridgeWithWCF.Web.Script.UI
                 });
 
             return await tcs.Task;
+        }
+
+        private async Task LoadGroupUserIntoTable()
+        {
+            ClearTableGroupUserList();
+
+            try
+            {
+                var result = await CallGroupUsersWS();
+
+                WriteTableUserGroupList(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0}<br>{1}", e.Message, e.StackTrace);
+
+                jQuery errorMessageTarget = jQuery.Select(errorSpanSelector);
+                errorMessageTarget.Html(string.Format("{0}<br>{1}", e.Message, e.StackTrace));
+
+                jQuery errorTarget = jQuery.Select(errorDivSelector);
+                errorTarget.Show();
+            }
+        }
+
+        private async Task<List<GroupUsers>> CallGroupUsersWS()
+        {
+            var tcs = new TaskCompletionSource<List<GroupUsers>>();
+
+            UserProxy.Instance.GetAllUserWithGroup(
+                (r) => tcs.TrySetResult(r),
+                (dynamic e) => {
+                    tcs.TrySetException(new Exception(e._message));
+                });
+
+            return await tcs.Task;
+        }
+
+
+
+        private void WriteTableUserGroupList(List<GroupUsers> usergroupRespData)
+        {
+            
+            foreach (GroupUsers grp in usergroupRespData)
+            {
+                foreach (User usr in grp.Users)
+                {
+                    WriteTableUserGroupListTemplate(grp.GroupName, usr);
+                }
+            }
+            
+        }
+
+        private void WriteTableUserGroupListTemplate(string groupeName, User user)
+        {
+
+            string temp = string.Empty;
+            temp += "<tr>";
+
+            temp += string.Format("<td>{0}</td>", groupeName);
+            temp += string.Format("<td>{0}</td>", user.Lastname);
+            temp += string.Format("<td>{0}</td>", user.Firstname);
+            temp += string.Format("<td>{0}</td>", user.Username);
+            temp += string.Format("<td>{0}</td>", user.Email);
+
+            temp += "</tr>";
+
+            jQuery.Select(groupUsersTableSelector).Append(temp);
+        }
+
+        private void WriteTableUserList(List<User> userRespData)
+        {
+
+            foreach (User usr in userRespData)
+            {
+                WriteTableUserListTemplate(usr);
+            }
         }
 
         private void WriteTableUserListTemplate(User user)
@@ -86,7 +155,14 @@ namespace BridgeWithWCF.Web.Script.UI
 
         private void ClearTableUserList()
         {
-            jQuery.Select(usersListTableSelector).Empty(); ;
+            jQuery.Select(usersListTableSelector).Empty();
+
+        }
+
+        private void ClearTableGroupUserList()
+        {
+            jQuery.Select(groupUsersTableSelector).Empty();
+
         }
     }
 }

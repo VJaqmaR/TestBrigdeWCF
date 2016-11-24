@@ -26,6 +26,18 @@ namespace BridgeWithWCF.Web.App.Service
             return userList;
         }
         #endregion
-        
+
+        #region Service to get the GroupsUsers
+
+        [OperationContract]
+        public List<GroupUsers> GetAllUserWithGroup()
+        {
+            List<GroupUsers> grpUsersList = new List<GroupUsers>();
+            grpUsersList = UserBLL.GetGroupUsers();
+
+            return grpUsersList;
+        }
+        #endregion
+
     }
 }

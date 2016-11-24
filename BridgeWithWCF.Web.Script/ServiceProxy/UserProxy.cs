@@ -5,7 +5,6 @@ using BridgeWithWCF.Web.DTO;
 
 namespace BridgeWithWCF.Web.Script.ServiceProxy
 {
-
     [Name("UserManager")]
     public class UserProxy
     {
@@ -14,14 +13,36 @@ namespace BridgeWithWCF.Web.Script.ServiceProxy
 
         [Name("GetAllUser")]
         public void GetAllUsers(GetResultCompleteDelegateUsers onCompleteEvent, ErrorDelegate onErrorEvent) { }
+        public delegate void GetResultCompleteDelegateUsers(List<User> results);
 
-        public delegate void GetResultCompleteDelegateUsers(UsersResponseData results);
+        [Name("GetAllUserWithGroup")]
+        public void GetAllUserWithGroup(GetResultCompleteDelegateGroupUsers onCompleteEvent, ErrorDelegate onErrorEvent) { }        
+        public delegate void GetResultCompleteDelegateGroupUsers(List<GroupUsers> results);
+
+
         public delegate void ErrorDelegate(object error);        
     }
 
-    public class UsersResponseData
+    public class GroupUsers
     {
-        public List<User> UserList;
+        [Name("GroupName")]
+        public string GroupName;
+        [Name("Users")]
+        public List<User> Users;
     }
-    
+
+    public class User
+    {
+        [Name("IdUser")]
+        public int IdUser;
+        [Name("Lastname")]
+        public string Lastname;
+        [Name("Firstname")]
+        public string Firstname;
+        [Name("Username")]
+        public string Username;
+        [Name("Email")]
+        public string Email;
+    }
+
 }
